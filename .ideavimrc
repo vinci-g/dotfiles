@@ -1,0 +1,85 @@
+"" .ideavim - vinci-g
+
+"" Base Settings
+
+set scrolloff=10
+set showmode
+set showcmd
+set visualbell
+set clipboard+=unnamed
+
+set incsearch
+set smartcase
+set ignorecase
+
+let mapleader = " "
+
+"" plugins
+set surround
+set highlightedyank
+set nerdtree
+
+"" tab navigation
+nnoremap <A-n> <action>(NextTab)
+nnoremap <A-p> <action>(PreviousTab)
+
+"" pane navigation
+nnoremap <A-h> <C-w>h
+nnoremap <A-l> <C-w>l
+nnoremap <A-k> <C-w>k
+nnoremap <A-j> <C-w>j
+
+"" move between methods in current file
+nnoremap [[ <Action>(MethodUp)
+nnoremap ]] <Action>(MethodDown)
+
+"" indentation
+vnoremap < <gv
+vnoremap > >gv
+
+"" popup navigation
+inoremap <C-j> <action>(PopupMenu-selectNext)
+inoremap <C-k> <action>(PopupMenu-selectPrev)
+
+"" Leader Commands
+
+"" comment lines
+map <leader>c <action>(CommentByLineComment)
+
+"" toggle nerdtree
+map <leader>x :NERDTreeToggle<CR>
+
+"" window splits
+map <leader>wv <Action>(SplitVertically)
+map <leader>ws <Action>(SplitHorizontally)
+map <leader>wu <Action>(Unsplit)
+map <leader>wm <Action>(MoveEditorOppositeTabGroup)
+
+"" file navigation
+map <leader>ff <action>(GotoFile)
+map <leader>fr <action>(RecentFiles)
+map <leader>fc <action>(FindInPath)
+map <leader><leader> <Action>(RecentFiles)
+map <leader>fl <action>(RecentLocations)
+map <leader>fs <action>(NewScratchFile)
+
+"" close active tab
+map <leader>q <action>(CloseContent)
+
+"" refactoring
+map <leader>rn <Action>(RenameElement)
+map <leader>rm <Action>(ExtractMethod)
+map <leader>rv <Action>(IntroduceVariable)
+map <leader>rf <Action>(IntroduceField)
+map <leader>rs <Action>(ChangeSignature)
+map <leader>rr <Action>(Refactorings.QuickListPopupAction)
+
+"" go to code
+map <leader>gd <Action>(GotoDeclaration)
+map <leader>gy <Action>(GotoTypeDeclaration)
+map <leader>gi <Action>(GotoImplementation)
+map <leader>gu <Action>(ShowUsages)
+map <leader>gt <Action>(GotoTest)
+map <leader>gf <Action>(Back)
+map <leader>gb <Action>(Forward)
+
