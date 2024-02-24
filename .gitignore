@@ -1,0 +1,9 @@
+# emacs config files
+eln-cache/
+elpaca/
+tree-sitter/
+transient/
+backups/
+auto-save-list/
+bookmarks
+projectile-bookmarks.eld
