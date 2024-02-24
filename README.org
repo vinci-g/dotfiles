@@ -3,27 +3,23 @@
 #+DESCRIPTION: Repo contains all my dotfiles
 #+LANGUAGE: en
 
-* DOTFILES
-
-This repo contains all config files for my system.
-
 * Requirements
 
 ** Git
 #+begin_src 
-sudo dnf install git
+$ sudo dnf install git
 #+end_src
 
 ** GNU Stow
 #+begin_src 
-sudo dnf install stow
+$ sudo dnf install stow
 #+end_src
 
 * Setup
 
 1. Checkout the repo on ~$HOME~ directory.
 2. Use ~stow~ to create symlinks
-   #+begin_src 
+   #+begin_src
      $ cd dotfiles
      $ stow .
    #+end_src
