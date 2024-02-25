@@ -207,7 +207,6 @@ Flycheck relies on external programs to check buffers. These programs must be in
   (use-package flycheck
     :ensure t
     :after seq
-    :diminish
     :init (global-flycheck-mode))
 #+end_src
 

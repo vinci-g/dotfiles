@@ -135,7 +135,6 @@
 (use-package flycheck
   :ensure t
   :after seq
-  :diminish
   :init (global-flycheck-mode))
 
 (use-package magit
