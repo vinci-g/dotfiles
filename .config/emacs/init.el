@@ -184,7 +184,9 @@
   (prog-mode . lsp)
   (lsp-mode . lsp-enable-which-key-integration)
   :commands
-  (lsp lsp-deferred))
+  (lsp lsp-deferred)
+  :after
+  (setq lsp-disabled-clients '(emacs-lisp-mode)))
 
 (use-package lsp-ui
   :ensure t
