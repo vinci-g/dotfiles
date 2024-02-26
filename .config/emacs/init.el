@@ -195,7 +195,7 @@
   :ensure t
   :after lsp-mode
   :custom
-  (company-idle-delay ,1)
+  (company-idle-delay .1)
   (company-minimum-prefix-length 1)
   (global-company-mode t))
 
