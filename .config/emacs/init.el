@@ -191,6 +191,11 @@
   :commands
   (lsp-ui-mode))
 
+(use-package flycheck
+  :ensure t
+  :config
+  (add-hook 'after-init-hook #'global-flycheck-mode))
+
 (use-package company
   :ensure t
   :after lsp-mode
@@ -210,6 +215,11 @@
   :ensure t
   :hook
   (prog-mode . rainbow-delimiters-mode))
+
+(use-package pet
+  :ensure t
+  :config
+  (add-hook 'python-base-mode-hook 'pet-mode -10))
 
 (use-package markdown-mode
   :ensure t
