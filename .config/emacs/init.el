@@ -175,7 +175,6 @@
   (setq which-key-idle-delay 1))
 
 ;; Development
-;; TODO: Configure dap-mode
 (use-package lsp-mode
   :ensure t
   :init
@@ -192,6 +191,20 @@
   :ensure t
   :commands
   (lsp-ui-mode))
+
+(use-package lsp-treemacs
+  :ensure t
+  :commands
+  (lsp-treemacs-errors-list))
+
+(use-package dap-mode
+  :ensure t
+  :after lsp-mode
+  :commands dap-debug
+  :config
+  (setq dap-python-debugger 'debugpy)
+  (require 'dap-python)
+  (require 'dap-lldb))
 
 (use-package flycheck
   :ensure t
@@ -248,9 +261,32 @@
 (use-package multi-vterm
   :ensure t)
 
+;; Org Mode
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((emacs-lisp . t)
+   (C . t)
+   (python . t)
+   (java . t)
+   (lisp . t)
+   (js . t)
+   (sql . t)))
+
+(use-package toc-org
+  :ensure t
+  :commands toc-org-enable
+  :init
+  (add-hook 'org-mode-hook 'toc-org-enable))
+
+(use-package org-bullets
+  :ensure t)
+
+(add-hook 'org-mode-hook 'org-indent-mode)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
 ;; Keybindings
 (use-package general
-    :ensure t
+  :ensure t
   :config
   (general-define-key
    "C-x C-b" 'ibuffer
@@ -263,3 +299,9 @@
    "C-c p b" 'persp-ibuffer
    "C-c p s" 'persp-switch
    ))
+
+;; Environment
+(use-package envrc
+  :ensure t
+  :init
+  (envrc-global-mode))
