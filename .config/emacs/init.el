@@ -1,7 +1,6 @@
 ;; CURRENTLY TESTING NEW CONFIG FILE
 
 ;;; Package Manager - Elpaca
-n
 (defvar elpaca-installer-version 0.6)
 (defvar elpaca-directory (expand-file-name "elpaca/" user-emacs-directory))
 (defvar elpaca-builds-directory (expand-file-name "builds/" elpaca-directory))
@@ -185,7 +184,7 @@ n
   :commands
   (lsp lsp-deferred))
 
-; Custom function to not turn on lsp-mode for emacs-lisp-mode
+; Custom function to not turn on lsp-mode for emac
 (defun lsp-prog-mode-hook ()
   "Custom hook for running LSP modes."
   (unless (eq major-mode 'emacs-lisp-mode)
@@ -296,8 +295,14 @@ n
   :ensure t
   :config
   (general-define-key
+
+   ;; built-in commands
    "C-x C-b" 'ibuffer
+   "C-c f" 'recentf
    "M-o" 'other-window
+
+   ;; consult
+   "C-x r b" 'consult-bookmark
 
    ;; terminal
    "C-c n" 'multi-vterm
