@@ -1,7 +1,7 @@
 ;; CURRENTLY TESTING NEW CONFIG FILE
 
 ;;; Package Manager - Elpaca
-
+n
 (defvar elpaca-installer-version 0.6)
 (defvar elpaca-directory (expand-file-name "elpaca/" user-emacs-directory))
 (defvar elpaca-builds-directory (expand-file-name "builds/" elpaca-directory))
@@ -62,7 +62,7 @@
                 shell-mode-hook
                 eshell-mode-hook
                 vterm-mode-hook))
-  (add-hook mode (lambda () display-line-numbers-mode 0)))
+  (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 ;; Editing
 (delete-selection-mode 1)
@@ -180,12 +180,16 @@
   :init
   (setq lsp-keymap-prefix "C-c l")
   :hook
-  (prog-mode . lsp)
-  (lsp-mode . lsp-enable-which-key-integration)
+  ((prog-mode . lsp-prog-mode-hook)
+  (lsp-mode . lsp-enable-which-key-integration))
   :commands
-  (lsp lsp-deferred)
-  :after
-  (setq lsp-disabled-clients '(emacs-lisp-mode)))
+  (lsp lsp-deferred))
+
+; Custom function to not turn on lsp-mode for emacs-lisp-mode
+(defun lsp-prog-mode-hook ()
+  "Custom hook for running LSP modes."
+  (unless (eq major-mode 'emacs-lisp-mode)
+    (lsp)))
 
 (use-package lsp-ui
   :ensure t
@@ -251,6 +255,9 @@
   :config
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
+
+;; Language Settings
+(setq c-ts-mode-indent-offset 4)
 
 ;; Terminal
 (use-package vterm
