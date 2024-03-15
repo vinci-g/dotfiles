@@ -82,7 +82,7 @@
 (use-package ef-themes
   :ensure t
   :init
-  (load-theme 'ef-duo-light t))
+  (load-theme 'ef-frost t))
 
 (use-package diminish
   :ensure t)
@@ -256,7 +256,7 @@
   (global-treesit-auto-mode))
 
 ;; Language Settings
-(setq c-ts-mode-indent-offset 4)
+;; (setq c-ts-mode-indent-offset 4)
 
 ;; Terminal
 (use-package vterm
@@ -297,7 +297,7 @@
   (general-define-key
 
    ;; built-in commands
-   "C-x C-b" 'ibuffer
+   "C-x C-b" 'persp-ibuffer
    "C-c f" 'recentf
    "M-o" 'other-window
 
