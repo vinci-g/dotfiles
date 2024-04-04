@@ -63,6 +63,9 @@
                 vterm-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
+;; Font Setting
+(set-face-attribute 'default nil :font "JetBrains Mono" :height 140)
+
 ;; Editing
 (delete-selection-mode 1)
 (electric-pair-mode 1)
@@ -91,12 +94,10 @@
   :ensure t
   :if (display-graphic-p))
 
-(use-package doom-modeline
+(use-package mood-line
   :ensure t
   :init
-  (doom-modeline-mode 1)
-  :custom
-  (doom-modeline-height 15))
+  (mood-line-mode))
 
 ;; Vertical Completion + Complementary Packages
 (use-package vertico
@@ -287,8 +288,12 @@
 (use-package org-bullets
   :ensure t)
 
+(with-eval-after-load 'org
+  (require 'org-tempo))
+
 (add-hook 'org-mode-hook 'org-indent-mode)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+(add-hook 'org-mode-hook (lambda () (company-mode 0)))
 
 ;; Keybindings
 (use-package general
@@ -317,3 +322,18 @@
   :ensure t
   :init
   (envrc-global-mode))
+
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("baf6946d46390fd34b5f92b778be544c7dc1286bafb81c314dc7ee8e3f8875d3" "f47dac3dabaa1774bb96d93ccc59794541639fd342aedca4ce2b47ee7c55540f" "908727ee710b5af6a997520ca544e20643638713fd443dc5c6f74fbe6f0d4909" "f7dcdb56bc0c04b6abaecc335eacf3b5cf262396168a2e65791b0c6a3317c849" "2974955a855645c114cf862152e7e98f56e99c2f1f167f1a79a75d5703aa5b4c" "caf354a83744b946d1159c05b567a3812ef264076281b0b8808412cd0a50342a" default)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
