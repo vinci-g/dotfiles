@@ -65,6 +65,7 @@
 
 ;; Font Setting
 (set-face-attribute 'default nil :font "JetBrains Mono" :height 140)
+(setq line-spacing 3)
 
 ;; Editing
 (delete-selection-mode 1)
@@ -235,10 +236,10 @@
   :hook
   (prog-mode . rainbow-delimiters-mode))
 
-(use-package pet
+(use-package json-mode
   :ensure t
   :config
-  (add-hook 'python-base-mode-hook 'pet-mode -10))
+  (setq js-indent-level 2))
 
 (use-package markdown-mode
   :ensure t
